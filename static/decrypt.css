@@ -1,0 +1,66 @@
+:root {
+    --primary: #043288;
+    --secondary: #ff532f;
+    --bgcolor: #ecf1ea;
+  }
+  body {
+    background: url('./banner.jpg') center/cover no-repeat;
+    color: #043288;
+  }
+  h2 {
+    padding: 20px 10px;
+    color: #043288;
+    text-align: center;
+    text-transform: uppercase;
+  }
+  .container{
+    min-height: 100vh;
+  }
+  
+form {
+    background-color: var(--bgcolor);
+    color: var(--primary);
+    font-weight: 700;
+    width: 55%;
+    margin: 0 auto;
+    padding: 5px 10px;
+    box-shadow: 2px 2px 5px var(--primary);
+  }
+  .btn-grad {
+    background-image: linear-gradient(
+      to right,
+      #77a1d3 0%,
+      #79cbca 51%,
+      #77a1d3 100%
+    );
+    margin: 5px;
+    padding: 10px 40px;
+    font-size: 16px;
+    font-weight: 700;
+    text-align: center;
+    text-transform: uppercase;
+    transition: 0.5s;
+    background-size: 200% auto;
+    color: var(--primary);
+    box-shadow: 2px 2px 2px var(--primary);
+    border: none;
+    border-radius: 20px;
+  }
+  
+  .btn-grad:hover {
+    background-position: right center; /* change the direction of the change here */
+    color: #fff;
+    text-decoration: none;
+    cursor: pointer;
+  }
+
+  .back-btn{
+    width: fit-content;
+    margin: 10px auto;
+  }
+  
+  @media screen and (max-width:500px) {
+    form{
+      width: 90%;
+    }
+  }

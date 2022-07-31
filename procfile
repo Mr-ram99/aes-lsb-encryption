@@ -1,0 +1,1 @@
+web: gunicorn lsb_encryption.wsgi --log-file -

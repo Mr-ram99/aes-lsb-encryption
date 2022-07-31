@@ -1,0 +1,30 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{% static 'result.css' %}">
+    <title>Encryption Succesfull</title>
+</head>
+<body>
+  <div class="container">
+    <h1>Text Encrypted Succesfully</h1>
+      {% if enc_img_obj %}
+        <h1>Click on image to download</h1>
+        <br>
+        <a href="{% static 'result.png' %}" download="result">
+        <img src="{% static 'result.png' %}" alt="Encrypted Image" style="max-height:300px">
+      </a>
+        <!-- <a href="{{ enc_img_obj.image.url}}" download>Download link</a> -->
+      {% endif %}
+
+      <div class="back-btn">
+        <a href="/"><button class="btn-grad">Return to Home</button></a>
+      </div>
+  </div>
+
+</body>
+</html>
