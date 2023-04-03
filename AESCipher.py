@@ -4,7 +4,7 @@ from Crypto.Cipher import AES
 from base64 import b64encode, b64decode
 
 class AESCipher(object):
-    def _init_(self, key):
+    def __init__(self, key):
         self.block_size = AES.block_size
         self.key = hashlib.sha256(key.encode()).digest()
 
@@ -33,7 +33,6 @@ class AESCipher(object):
     def __unpad(plain_text):
         last_character = plain_text[len(plain_text) - 1:]
         return plain_text[:-ord(last_character)]
-    
 
 aes=AESCipher("65")
 encrypt=aes.encrypt("I am Gaurav")
