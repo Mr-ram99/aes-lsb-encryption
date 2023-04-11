@@ -1,0 +1,33 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" type="text/css" href="{% static 'result.css' %}">
+  <title>Encryption Successfull</title>
+</head>
+
+<body>
+  <div class="container">
+    <h1>Text Encrypted Successfully</h1>
+    {% if enc_aud_obj %}
+    <h1>Here is the encrypted audio, you can download it.</h1>
+    <br>
+    <audio controls>
+      <source src="{% static 'result_temp.wav' %}" type="audio/wav">
+      Your browser does not support the audio element.
+    </audio>
+    <br>
+    {% endif %}
+    <div class="back-btn">
+      <a href="/"><button class="btn-grad">Return to Home</button></a>
+    </div>
+  </div>
+
+</body>
+
+</html>

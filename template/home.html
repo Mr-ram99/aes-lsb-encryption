@@ -1,6 +1,7 @@
 {% load static %}
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -8,12 +9,20 @@
     <link rel="stylesheet" type="text/css" href="{% static 'home.css' %}">
     <title>Home</title>
 </head>
+
 <body>
     <div class="container">
-        <div class="banner">
-            <h1>Encrypt Your Text <br> In Pictures <br><span>For Free</span></h1>
-            <a href="/encrypt/"><button class="btn-grad">ENCRYPT</button></a>
-            <a href="/decrypt/"><button class="btn-grad">DECRYPT</button></a>
+        <div>
+            <div class="banner">
+                <h1>Encrypt Your Text <br> In <span> Images </span></h1>
+                <a href="/encrypt/"><button class="btn-grad">ENCRYPT</button></a>
+                <a href="/decrypt/"><button class="btn-grad">DECRYPT</button></a>
+            </div>
+            <div class="banner">
+                <h1>Encrypt Your Text <br> In <span> Audios </span></h1>
+                <a href="/audio-encrypt/"><button class="btn-grad-2">ENCRYPT</button></a>
+                <a href="/audio-decrypt/"><button class="btn-grad-2">DECRYPT</button></a>
+            </div>
         </div>
         <div class="details">
             <h2>How it works?</h2>
@@ -21,19 +30,20 @@
                 <li>Encryption</li>
                 <ol type="a">
                     <li>Click on encrypt button.</li>
-                    <li>Enter your text and upload an image.</li>
-                    <li>You will see an encrypted image on screen, click on image to download it.</li>
+                    <li>Enter your text and upload an image/audio.</li>
+                    <li>You will see an encrypted image/audio on screen, click on image/audio to download it.</li>
                 </ol>
                 <br>
                 <li>Decryption</li>
                 <ol type="a">
                     <li>Click on decrypt button.</li>
-                    <li>upload an image.</li>
+                    <li>upload an image/audio file.</li>
                     <li>You will see decrypted text on screen.</li>
                 </ol>
             </ol>
-            
+
         </div>
     </div>
 </body>
+
 </html>
