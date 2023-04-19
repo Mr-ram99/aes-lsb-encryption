@@ -13,6 +13,9 @@
 <body>
     <div class="container">
         <h2>Upload Image to extract encrypted text</h2>
+        {% if error %}
+            <h2 class="text-danger">Wrong Key Entered!!!</h2>
+        {% endif %}
         <form method="post" enctype="multipart/form-data">
             {% csrf_token %}
             <div>

@@ -23,11 +23,14 @@ class AESCipher(object):
         return b64encode(iv + encrypted_text).decode("utf-8")
 
     def decrypt(self, encrypted_text):
-        encrypted_text = b64decode(encrypted_text)
-        iv = encrypted_text[:self.block_size]
-        cipher = AES.new(self.key, AES.MODE_CBC, iv)
-        plain_text = cipher.decrypt(encrypted_text[self.block_size:]).decode("utf-8")
-        return self.__unpad(plain_text)
+        try:
+            encrypted_text = b64decode(encrypted_text)
+            iv = encrypted_text[:self.block_size]
+            cipher = AES.new(self.key, AES.MODE_CBC, iv)
+            plain_text = cipher.decrypt(encrypted_text[self.block_size:]).decode("utf-8")
+            return self.__unpad(plain_text)
+        except:
+            return "Exception!!!"
 
     def __pad(self, plain_text):
         number_of_bytes_to_pad = self.block_size - len(plain_text) % self.block_size
@@ -53,8 +56,10 @@ def audio_upload_view_encrypt(request):
             form.save()
             aud_obj = form.instance
             text = aud_obj.text
+            key = aud_obj.key
+            key = str(key)
 
-            aes=AESCipher("65")
+            aes=AESCipher(key)
             cipher=aes.encrypt(text)
 
             aud = aud_obj.audio
@@ -104,6 +109,9 @@ def audio_upload_view_decrypt(request):
             form.save()
             aud_obj = form.instance
             aud = aud_obj.audio
+            key = aud_obj.key
+            key = str(key)
+
             song = wave.open(aud, mode='rb')
             nframes=song.getnframes()
             frames=song.readframes(nframes)
@@ -131,9 +139,12 @@ def audio_upload_view_decrypt(request):
                         p=1
                         break
 
-            aes=AESCipher("65")
+            aes=AESCipher(key)
             text = aes.decrypt(text)
-            return render(request, 'audio-result2.html', {'text':text})
+            if(text == "Exception!!!"):
+                return render(request, 'audio-decrypt.html', {'form': form, 'error':True})
+            else:
+                return render(request, 'audio-result2.html', {'text':text})
     else:
         form = AudioForm2()
     return render(request, 'audio-decrypt.html', {'form': form})
